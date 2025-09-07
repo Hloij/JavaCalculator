@@ -57,7 +57,13 @@ public class HelloController {
                     if (!Was2) {
                         Zadacha.setText(Zadacha.getText() + ",");
                         String sim = _simvol;
-                        _simvol = "-";
+                        switch (_simvol){
+                            case "*":_simvol="/";break;
+                            case "/":_simvol="*";break;
+                            case "+":_simvol="-";break;
+                            case "-":_simvol="+";break;
+                        }
+
                         _otvet = Double.parseDouble(Razchet(String.valueOf(_otvet), _chslo));
                         _simvol = sim;
                         Was2 = true;
@@ -103,21 +109,15 @@ public class HelloController {
             _otvet = 0;
             _simvol = "";
         }
-        try {
-            if (str.charAt(str.length() - 1) != '=') {
-                Zadacha.setText(Zadacha.getText() + target.getText());
-            } else {
+
                 Zadacha.setText(Zadacha.getText() + " " + target.getText());
-            }
-        } catch (Exception exception) {
-            Zadacha.setText(Zadacha.getText() + target.getText());
-        } finally {
+
             _chslo += target.getText();
             if (!Was2) {
                 _otvet = Double.parseDouble(Razchet(String.valueOf(_otvet), _chslo));
             }
 
-        }
+
     }
 
     private String Razchet(String chislo1, String chislo2) {//функция расчета
