@@ -100,7 +100,7 @@ public class HelloController {
     @FXML
     protected void ClickOnNumber(javafx.event.ActionEvent ationEvent) {
         Button target = (Button) ationEvent.getTarget();
-        String str = Zadacha.getText();
+
         if (Was) {
             Zadacha.setText("");
             Was = false;
